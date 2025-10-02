@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="root" prefHeight="646.0" prefWidth="800.0" styleClass="root" stylesheets="@style/reserve-seat.css" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.busreservationsystem.controllers.ReserveSeatController">
+
+    <VBox fx:id="vbox" alignment="CENTER" layoutX="150.0" layoutY="24.0" maxWidth="500" prefHeight="753.0" prefWidth="500" spacing="20" styleClass="vbox-container">
+
+        <!-- Bus Info Label -->
+        <Label fx:id="busInfoLabel" prefHeight="38.0" prefWidth="486.0" styleClass="label-title" text="Bus info will appear here">
+         <font>
+            <Font size="8.0" />
+         </font></Label>
+
+        <!-- Seat Grid -->
+        <GridPane fx:id="seatGrid" alignment="CENTER" hgap="15" prefHeight="632.0" prefWidth="450.0" vgap="15" />
+
+    </VBox>
+</AnchorPane>

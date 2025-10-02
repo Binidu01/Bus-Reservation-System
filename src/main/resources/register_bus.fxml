@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="600" prefWidth="800" styleClass="root" stylesheets="@style/register.css" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.busreservationsystem.controllers.RegisterBusController">
+
+    <VBox alignment="TOP_CENTER" layoutX="272.0" layoutY="56.0" spacing="20" styleClass="vbox-container">
+
+        <Label styleClass="label-title" text="Register New Bus" />
+
+        <TextField fx:id="busNumberField" promptText="Bus Number" styleClass="text-field" />
+        <TextField fx:id="totalSeatField" promptText="Total Seats" styleClass="text-field" />
+        <TextField fx:id="startPointField" promptText="Start Point" styleClass="text-field" />
+        <TextField fx:id="endPointField" promptText="End Point" styleClass="text-field" />
+        <TextField fx:id="startTimeField" promptText="Start Time (HH:MM)" styleClass="text-field" />
+        <TextField fx:id="fareField" promptText="Fare (LKR)" styleClass="text-field" />
+
+        <Button onAction="#registerBus" styleClass="button-register" text="Register Bus" />
+    </VBox>
+</AnchorPane>

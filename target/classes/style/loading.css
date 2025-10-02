@@ -1,0 +1,40 @@
+/* Root AnchorPane background */
+.root {
+    -fx-background-color: linear-gradient(to bottom right, #4e9af1, #2851a3);
+    -fx-padding: 0;
+}
+
+/* VBox container */
+.vbox-loading {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 14px;
+    -fx-padding: 40;
+    -fx-spacing: 25;
+    -fx-alignment: center;
+    -fx-max-width: 400;
+    -fx-max-height: 250;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 12, 0, 0, 3);
+    -fx-translate-x: 100;
+    -fx-translate-y: 100;
+}
+
+/* Title label */
+.label-title {
+    -fx-font-family: 'Segoe UI Semibold', Arial, sans-serif;
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;
+}
+
+/* Progress bar */
+.progress-bar {
+    -fx-pref-width: 300px;
+    -fx-accent: #42a5f5;
+}
+
+/* Status label */
+.label-status {
+    -fx-font-family: 'Segoe UI', Arial, sans-serif;
+    -fx-font-size: 14px;
+    -fx-text-fill: #546e7a;
+}
