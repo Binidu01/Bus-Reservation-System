@@ -184,6 +184,11 @@ public class ReserveSeatController {
                 for (Task t : reservationQueue) {
                     System.out.println(t);
                 }
+
+                // 🔄 NEW: notify any open dashboard to refresh its reservation list
+                if (CustomerDashboardController.onReservationChanged != null) {
+                    CustomerDashboardController.onReservationChanged.run();
+                }
             }
 
             return affectedRows > 0;
@@ -216,16 +221,13 @@ public class ReserveSeatController {
             ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
-                String startTimeStr = null;
-                java.sql.Time sqlTime = rs.getTime("start_time");
-                if (sqlTime != null) {
-                    startTimeStr = sqlTime.toLocalTime().toString();
-                }
+                // ✅ FIXED: start_time is stored as VARCHAR("HH:mm") per schema, not TIME
+                String startTimeStr = rs.getString("start_time");
 
                 selectedBus = new Bus(
                         rs.getInt("id"),
                         rs.getString("bus_number"),
-                        rs.getInt("total_seat"),
+                        rs.getInt("total_seats"),   // ✅ FIXED: was "total_seat" (singular) — wrong column name
                         rs.getString("start_point"),
                         rs.getString("end_point"),
                         startTimeStr,

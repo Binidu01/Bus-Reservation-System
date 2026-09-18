@@ -36,6 +36,10 @@ public class CustomerDashboardController {
     // Stack to store recently deleted reservations for terminal viewing
     private static final Stack<Integer> deletedReservationStack = new Stack<>();
 
+    // 🔄 NEW: Static callback so other controllers (e.g. ReserveSeatController)
+    // can ask this dashboard to refresh its reservation list.
+    public static Runnable onReservationChanged;
+
     // ✅ Called after login to initialize dashboard
     public void setCustomerData(int id, String name) {
         this.customerId = id;
@@ -45,7 +49,11 @@ public class CustomerDashboardController {
         if (idLabel != null) {
             idLabel.setText("Customer ID: " + id);
         }
+
         loadReservedSeats(id);
+
+        // 🔄 NEW: Register a refresh callback for other controllers
+        onReservationChanged = () -> loadReservedSeats(customerId);
     }
 
     // ✅ Load all reserved seats for this customer - ENHANCED VERSION WITH CANCEL FUNCTIONALITY
@@ -413,6 +421,9 @@ public class CustomerDashboardController {
     // ✅ Log out and go back to login screen
     @FXML
     private void handleLogout() {
+        // 🔄 NEW: clear the callback so a stale dashboard doesn't get refreshed
+        onReservationChanged = null;
+
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/login.fxml"));
             Parent root = loader.load();

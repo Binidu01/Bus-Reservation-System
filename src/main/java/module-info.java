@@ -16,10 +16,6 @@ module com.example.busreservationsystem {
     // Add this to include the jbcrypt library (if your IDE recognizes this module name)
     requires jbcrypt;
 
-    // If jbcrypt is an unnamed module and not recognized, add this line to read unnamed modules:
-    // (optional, sometimes helps with unnamed modules)
-    // requires static org.mindrot.jbcrypt;
-
     // Required for FXMLLoader to access your controller classes
     opens com.example.busreservationsystem to javafx.fxml;
     opens com.example.busreservationsystem.controllers to javafx.fxml;
